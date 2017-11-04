@@ -1,2 +1,0 @@
-# AutoMAC
-AutoMAC
