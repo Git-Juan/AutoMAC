@@ -471,9 +471,7 @@ void accion() {
     break;
     
 
-    case '0':
-      vel = 3;
-      break;
+   
 
     case 'z':
       if((millis() - tiempo_led) > 100){ //Tiempo para intemritencia del LED
