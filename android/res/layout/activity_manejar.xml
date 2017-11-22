@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/pattron"
+    android:id="@+id/relativePadre"
+    tools:context="com.example.lautaro.clasesoa.ManejarActivity">
+
+    <!--<include layout="@layout/toolbar"
+        android:id="@+id/include" />-->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AutoMAC"
+        android:background= "#80000000"
+        android:textSize="22dp"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:textColor="#FFFF"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_below="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Velocidad"
+            android:textSize="20dp"
+            android:textColor="#FFFF"
+            android:id="@+id/labelVelocidad"
+            android:layout_marginLeft="30dp"
+            />
+
+        <SeekBar
+            android:layout_below="@+id/labelVelocidad"
+            android:id="@+id/seekBarVelocidad"
+            android:layout_marginTop="10px"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="500dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:max="4"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/linearLayout"
+            >
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ic_avanzar"
+                android:layout_marginTop="15dp"
+                android:id="@+id/btnAvanzar"
+            />
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ic_retroceder"
+                android:id="@+id/btnFrenar"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/linearLayout">
+
+            <RelativeLayout
+
+                android:layout_width="200dp"
+                android:layout_height="wrap_content">
+
+                <Switch
+                    android:id="@+id/switchPrendido"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:padding="20dp"
+                    android:text="Encender"
+                    android:switchMinWidth="60dip"
+                    android:textColor="#FFFF"
+                    android:textSize="20dp"
+                    android:theme="@style/SCBSwitch"
+                    android:background= "#80000000"/>
+
+                <TextView
+                    android:id="@+id/txtVelocidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2,05"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="80dp"
+                    android:textColor="#ffff"
+                    android:layout_marginTop="85dp"/>
+                <TextView
+                    android:id="@+id/txtkilometro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Km/h"
+                    android:textSize="30dp"
+                    android:textColor="#ffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true">
+
+            <RelativeLayout
+                android:layout_width="200dp"
+                android:layout_height="match_parent">
+                <Button
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/ic_stop"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/btnStop"
+                    />
+
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/swtichSensores"
+                    android:layout_below="@+id/btnStop"
+                    android:switchMinWidth="60dip"
+                    android:switchPadding="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_centerHorizontal="true"
+                    android:theme="@style/SCBSwitch"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/labelSwitch"
+                    android:text="Automático"
+                    android:textSize="18dp"
+                    android:textColor="#FFFF"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/swtichSensores"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
