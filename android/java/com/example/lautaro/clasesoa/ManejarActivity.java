@@ -20,9 +20,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 public class ManejarActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -47,8 +45,6 @@ public class ManejarActivity extends AppCompatActivity implements SensorEventLis
 
 
 
-   // private CheckBox chkVel1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +52,7 @@ public class ManejarActivity extends AppCompatActivity implements SensorEventLis
 
         try{
             intentService = new Intent(ManejarActivity.this, Servicio.class);
+
             //automaticamente la pantalla se pone en landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
             //Asociacion de componentes visuales
@@ -92,6 +89,7 @@ public class ManejarActivity extends AppCompatActivity implements SensorEventLis
                             startService(intentService);
                             intentService.getExtras().clear();
                             intentService.putExtra("comando", "a");
+                            intentService.getExtras().clear();
                             startService(intentService);
                             primeraVezAvelerar = true;
                         }
@@ -99,8 +97,7 @@ public class ManejarActivity extends AppCompatActivity implements SensorEventLis
 
                     if(event.getAction() == MotionEvent.ACTION_UP) {
                         primeraVezAvelerar = false;
-                        //Hilito h = new Hilito();
-                        //h.execute("f");
+
                         intentService.putExtra("comando", "f");
                         startService(intentService);
                         intentService.getExtras().clear();
@@ -123,8 +120,7 @@ public class ManejarActivity extends AppCompatActivity implements SensorEventLis
                             startService(intentService);
                             intentService.getExtras().clear();
 
-                            // Hilito h = new Hilito();
-                            // h.execute("r");
+
                             primeraVezReversa = true;
                         }
                     }
@@ -153,21 +149,23 @@ public class ManejarActivity extends AppCompatActivity implements SensorEventLis
 
             switchPrendido.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    // do something, the isChecked will be
-                    // true if the switch is in the On position
+
 
 
                     intentService.getExtras().clear();
 
-                    //Hilito h = new Hilito();
+
                     if (isChecked){
-                        //h.execute("p");
+
+
                         intentService.putExtra("comando", "p");
+                        startService(intentService);
                     }else{
-                        //h.execute("o");
+
                         intentService.putExtra("comando", "o");
+                        startService(intentService);
                     }
-                    startService(intentService);
+
 
                 }
             });
@@ -244,20 +242,13 @@ public class ManejarActivity extends AppCompatActivity implements SensorEventLis
                     startService(intentService);
                     intentService.getExtras().clear();
 
-                    /*Hilito h = new Hilito();
-                    h.execute("p");
-                    Hilito h1 = new Hilito();
-                    h1.execute("1");
-                    Hilito h2 = new Hilito();
-                    h2.execute("a");
-                    */
+
                 }else{
                     intentService.putExtra("comando", "f");
                     startService(intentService);
                     intentService.getExtras().clear();
 
-                    //Hilito h = new Hilito();
-                    //h.execute("f");
+
                 }
 
 
@@ -265,13 +256,12 @@ public class ManejarActivity extends AppCompatActivity implements SensorEventLis
                 String valor = String.valueOf(event.values[0]);
                 Log.i("Proximidad",valor);
             }
-            //solo switch activo da LUZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+            //solo switch activo da LUZ
             if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
 
                 if (event.values[0] > 300) {
                     if(!primeraVezLuz) {
-                        //Hilito h = new Hilito();
-                        //h.execute("z");
+
                         intentService.putExtra("comando", "z");
                         startService(intentService);
                         intentService.getExtras().clear();
@@ -279,8 +269,7 @@ public class ManejarActivity extends AppCompatActivity implements SensorEventLis
                     }
                 }else{
                     if(primeraVezLuz) {
-                        //Hilito h = new Hilito();
-                        //h.execute("y");
+
                         intentService.putExtra("comando", "y");
                         startService(intentService);
                         intentService.getExtras().clear();
@@ -296,44 +285,38 @@ public class ManejarActivity extends AppCompatActivity implements SensorEventLis
             if(btnAcelerar.isPressed()) {
                 if (event.values[1] < -4 && event.values[1] > -5) {
                     //doblar Izquierda
-                    //Hilito h = new Hilito();
-                    //h.execute("c");
+
                     intentService.putExtra("comando", "c");
                 }
 
                 //med izquierda
                 if (event.values[1] < -5 && event.values[1] > -7) {
                     //doblar Izquierda
-                    //Hilito h = new Hilito();
-                    //h.execute("e");
+
                     intentService.putExtra("comando", "e");
                 }
                 //max izquierda
                 if (event.values[1] < -7 && event.values[1] > -9) {
                     //doblar Izquierda
-                    //Hilito h = new Hilito();
-                    //h.execute("h");
+
                     intentService.putExtra("comando", "h");
                 }
                 //min derecha
                 if (event.values[1] > 4 && event.values[1] < 5) {
                     //doblar Derecha
-                    //Hilito h = new Hilito();
-                    //h.execute("b");
+
                     intentService.putExtra("comando", "b");
                 }
                 //med derecha
                 if (event.values[1] > 5 && event.values[1] < 7) {
                     //doblar Derecha
-                    //Hilito h = new Hilito();
-                    //h.execute("d");
+
                     intentService.putExtra("comando", "d");
                 }
                 //max derecha
                 if (event.values[1] > 7 && event.values[1] < 9) {
                     //doblar Derecha
-                    //Hilito h = new Hilito();
-                    //h.execute("g");
+
                     intentService.putExtra("comando", "g");
                 }
 
@@ -345,40 +328,34 @@ public class ManejarActivity extends AppCompatActivity implements SensorEventLis
             if (btnReversa.isPressed()) {
                 //min izquierda
                 if (event.values[1] < 4 && event.values[1] > 5) {
-                    //Hilito h = new Hilito();
-                    //h.execute("j");
+
                     intentService.putExtra("comando", "j");
                 }
                 //min derecha
                 if (event.values[1] < -4 && event.values[1] > -5) {
-                    //Hilito h = new Hilito();
-                    //h.execute("i");
+
                     intentService.putExtra("comando", "i");
                 }
                 //med izquierda
                 if (event.values[1] > 5 && event.values[1] < 7) {
-                    //Hilito h = new Hilito();
-                    //h.execute("l");
+
                     intentService.putExtra("comando", "l");
                 }
 
                 //med derecha
                 if (event.values[1] < -5 && event.values[1] > -7) {
-                    //Hilito h = new Hilito();
-                    //h.execute("k");
+
                     intentService.putExtra("comando", "k");
                 }
 
                 //max ixquierda
                 if (event.values[1] > 7 && event.values[1] < 9) {
-                    //Hilito h = new Hilito();
-                    //h.execute("n");
+
                     intentService.putExtra("comando", "n");
                 }
                 //max derecha
                 if (event.values[1] < -7 && event.values[1] > -9) {
-                    //Hilito h = new Hilito();
-                    //h.execute("m");
+
                     intentService.putExtra("comando", "m");
                 }
 
@@ -394,30 +371,11 @@ public class ManejarActivity extends AppCompatActivity implements SensorEventLis
     }
 
 
-    //clase que crea los hilos que van al arduino
-    /*
-    private class Hilito extends AsyncTask<String, Void, String>{
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            //chequear coneccion
-        }
-
-        @Override
-        protected String doInBackground(String... strings) {
-
-            String comando = strings[0];
-            s.enviar(comando);
-            //Log.i("MANEJO",comando);
-            return "enviado";
-        }
-    }
-    */
 
 
 
 }
+
 
 
 
