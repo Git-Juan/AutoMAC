@@ -13,8 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_car"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".testSensor">
+        
 
         </activity>
         <activity android:name=".Home">
